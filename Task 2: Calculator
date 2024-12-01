@@ -1,0 +1,24 @@
+print("\n---------Calculator---------")
+
+def calculation(num1, num2, opr):
+    match opr:
+        case '+':
+            print("\nJax : The sum of", num1,"and", num2, "is",num1 + num2)
+
+        case '-':
+            print("\nJax : The difference of", num1,"and", num2, "is",num1 - num2)
+
+        case '*':
+            print("\nJax : The product of", num1,"and", num2, "is",num1 * num2)
+
+        case '/':
+            print("\nJax : The division of", num1,"and", num2, "is",num1 / num2)
+
+        case _:
+            print("\nJax : Enter a valid operation..!!")
+
+num1 = float(input("\nJax : Enter the first number..!!\nUser : "))
+opr = input("\nJax : Enter the operation..!!\nUser : ")
+num2 = float(input("\nJax : Enter the second number..!!\nUser : "))
+
+calculation(num1, num2, opr)
