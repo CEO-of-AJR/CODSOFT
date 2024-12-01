@@ -1,0 +1,64 @@
+def add_task(todo_list):
+    try:
+        num_of_tasks = int(input("\nJax : How many tasks do you wanna add..??\nUser : "))
+        if num_of_tasks <= 0:
+            print("\nJax : Please enter a positive number..!!")
+            return
+        for i in range(num_of_tasks):
+            task = input("\nJax : Enter a task..!!\nUser : ").strip()
+            if task:
+                todo_list.append(task)
+                print(f"\nJax : Task added - {task}")
+            else:
+                print("\nJax : Empty task not added..!!")
+    except ValueError:
+        print("\nJax : Invalid input. Please enter a number..!!")
+
+
+def show_tasks(todo_list):
+    if todo_list:
+        print("\nTasks:")
+        for i, task in enumerate(todo_list, 1):
+            print(f"{i}. {task}")
+    else:
+        print("\nJax : No tasks to show..!!")
+
+def remove_task(todo_list):
+    if todo_list:
+        show_tasks(todo_list)
+        try:
+            task_num = int(input("\nJax : Enter the task number to remove..!!\nUser : "))
+            if 1 <= task_num <= len(todo_list):
+                removed_task = todo_list.pop(task_num - 1)
+                print(f"\nTask removed: {removed_task}")
+            else:
+                print("\nJax : Invalid task number..!!")
+        except ValueError:
+            print("\nJax : Please enter a valid number..!!")
+    else:
+        print("\nJax : No tasks to remove..!!")
+
+def main():
+    todo_list = []
+    while True:
+        print("\n--- To-Do List ---")
+        print("1. Add Task")
+        print("2. Show Tasks")
+        print("3. Remove Task")
+        print("4. Exit")
+        
+        choice = input("\nJax : Choose an option..!!\nUser : ").strip()
+        if choice == "1":
+            add_task(todo_list)
+        elif choice == "2":
+            show_tasks(todo_list)
+        elif choice == "3":
+            remove_task(todo_list)
+        elif choice == "4":
+            print("\nJax : Exiting To-Do List..!!")
+            break
+        else:
+            print("\nJax : Invalid choice, please try again..!!")
+
+if __name__ == "__main__":
+    main()
