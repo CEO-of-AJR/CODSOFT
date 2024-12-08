@@ -1,0 +1,69 @@
+import random
+
+def get_jax_choice():
+    return random.randint(1, 3)
+
+def winner(user_choice, jax_choice):
+    if user_choice == jax_choice:
+        return "\nJax : It's a tie..!!"
+    
+    elif user_choice == 1 and jax_choice == 3 :
+        return "\nJax : You won..!!"
+    
+    elif user_choice == 3 and jax_choice == 2 :
+        return "\nJax : You won..!!"
+    
+    elif user_choice == 2 and jax_choice == 1 :
+        return "\nJax : You won..!!"
+    
+    else:
+        return "\nJax : You lose..!!"
+
+def display_choice(choice):
+    if choice == 1:
+        return "Rock"
+    
+    elif choice == 2:
+        return "Paper"
+    
+    elif choice == 3:
+        return "Scissors"
+
+def play_game():
+    print("\n---------------Rock Paper Scissor Game---------------")
+    
+    while True:
+        try:
+            user_choice = int(input("\nJax : Choose 1 for Rock, 2 for Paper and 3 for Scissor or 0 to Quit..!!\nUser : "))
+            if user_choice == 0:
+                print("\nJax : Cool, thanks for playing..!!")
+                break
+            if user_choice not in [1, 2, 3]:
+                print("\nJax : Invalid choice, try again..!!")
+                continue
+            
+            jax_choice = get_jax_choice()
+            print(f"\nJax : You chose {display_choice(user_choice)}..!!")
+            print(f"\nJax : And I chose {display_choice(jax_choice)}..!!")
+            
+            result = winner(user_choice, jax_choice)
+            print(result)
+
+            while True:       
+                play_again = input("\nJax : Do you wanna play again, yes or no..??\nUser : ").lower()
+                if play_again == "yes":
+                    break
+                    
+                elif play_again == "no":
+                    print("\nJax : Cool, thanks for playing..!!")
+                    return
+                
+                else:
+                    print("\nJax : Enter a valid choice..!!")
+
+        
+        except ValueError:
+            print("\nJax : Invalid input, please enter a number..!!")
+
+play_game()
+
