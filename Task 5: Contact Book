@@ -1,0 +1,76 @@
+contacts = {}
+
+def add_contact():
+    name = input("\nJax : Enter the name..!!\nUser : ")
+    phone = input("\nJax : Enter the phone number..!!\nUser : ")
+    email = input("\nJax : Enter the email address..!!\nUser : ")
+    address = input("\nJax : Enter the address..!!\nUser : ")
+    contacts[name] = {'phone': phone, 'email': email, 'address': address}
+    print("\nJax : Contact added successfully..!!")
+
+def view_contacts():
+    print("\nContact List:")
+    for name, details in contacts.items():
+        print(f"Name: {name}, Phone: {details['phone']}")
+
+def search_contact():
+    search_query = input("\nJax : Enter the name or phone number to search..!!\nUser : ")
+    found = False
+    for name, details in contacts.items():
+        if search_query in name or search_query in details['phone']:
+            print(f"Name: {name}, Phone: {details['phone']}, Email: {details['email']}, Address: {details['address']}")
+            found = True
+            break
+    if not found:
+        print("\nJax : No such contact found..!!")
+
+def update_contact():
+    name = input("\nJax : Enter the name of the contact to update..!!\nUser : ")
+    if name in contacts:
+        phone = input("\nJax : Enter the new phone number..!!\nUser : ")
+        email = input("\nJax : Enter the new email address..!!\nUser : ")
+        address = input("\nJax : Enter the new address..!!\nUser : ")
+        contacts[name] = {'phone': phone, 'email': email, 'address': address}
+        print("\nJax : Contact updated successfully..!!'")
+    else:
+        print("\nJax : No such contact found..!!")
+
+def delete_contact():
+    name = input("\nJax : Enter the name of the contact to delete..!!\nUser : ")
+    if name in contacts:
+        del contacts[name]
+        print("\nJax : Contact deleted successfully..!!")
+    else:
+        print("\nJax : No such contact found..!!")
+
+def main():
+    while True:
+        print("\n------------Contact Book Menu------------\n")
+        print("Jax : What do you wanna do..??")
+        print("1. Add Contact")
+        print("2. View Contact List")
+        print("3. Search Contact")
+        print("4. Update Contact")
+        print("5. Delete Contact")
+        print("6. Exit")
+
+        choice = input("\nJax : Enter your choice..!!\nUser : ")
+
+        if choice == '1':
+            add_contact()
+        elif choice == '2':
+            view_contacts()
+        elif choice == '3':
+            search_contact()
+        elif choice == '4':
+            update_contact()
+        elif choice == '5':
+            delete_contact()
+        elif choice == '6':
+            break
+        else:
+            print("\nJax : Invalid choice, please try again..!!")
+
+if __name__ == "__main__":
+    main()
+
